@@ -20,7 +20,7 @@
             </a></li>
         </ul>
         <div class="offcanvas__logo">
-            <a href="./index.html"><img src="/user/Images/logo.png" alt=""></a>
+            <a href="/"><img src="/user/Images/logo.png" alt=""></a>
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
@@ -36,15 +36,15 @@
             <div class="row">
                 <div class="col-xl-2 col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="/adminf/images/sportslogo.jpg" style="width:100px; height: 50px;" alt=""></a>
+                        <a href="/"><img src="/adminf/images/sportslogo.jpg" style="width:100px; height: 50px;" alt=""></a>
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-7">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="/">Home</a></li>
+                            <li class=""><a href="/">Home</a></li>
                             {{#each showCategory}}
-                            <li><a href="/category?category={{this.category}}">{{this.category}}</a></li>&nbsp;&nbsp;&nbsp;
+                            <li class=""><a href="/category?category={{this.category}}">{{this.category}}</a></li>&nbsp;&nbsp;&nbsp;
                             {{/each}}
                             <li><a href="/shop">Shop</a></li>
                             <li><a href="#">Pages</a>

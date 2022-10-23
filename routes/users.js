@@ -21,7 +21,7 @@ const verifyLogin = (req, res, next) => {
   if (req.session.userLoggedIn) {
     next();
   } else {
-    res.redirect("/");
+    res.redirect("/login");
   }
 };
 /* GET users listing. */
@@ -542,7 +542,7 @@ let user=req.session.user
     }
   });
 
-  router.get("/add-to-whishlist/:id", (req, res, next) => {
+  router.get("/add-to-whishlist/:id",verifyLogin, (req, res, next) => {
     try {
       userHelpers
         .addToWhishlist(req.params.id, req.session.user._id)
