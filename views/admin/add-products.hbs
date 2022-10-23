@@ -1,0 +1,67 @@
+ {{!-- <section>
+  <div class=" container row">
+    <div class="ml-5 col-md-6">
+      <h2 class="text-center mt-5">Add Products</h2>
+      <form action="/admin/add-products" method="post" enctype="multipart/form-data">
+        <label for="">Name</label>
+        <input type="text" name="name" class="form-control" required/>
+
+         <label for="">Category</label>
+        <input type="text" name="category" class="form-control" required/>
+
+        <label for="">Description</label>
+        <input type="text" name="description" class="form-control" required/>
+
+        <label for="">Price</label>
+        <input type="Number" name="price" class="form-control" required/>
+
+        <label for="">Image</label>
+        <input type="file" name="Image" class="form-control" required/>
+
+        <button type="submit" class="btn btn-success mt-4">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</section> --}}
+
+{{!-- <h1>Admin Add Products</h1> --}}
+<div class="container">
+    <div id="right-panel" class="right-panel">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="text-center mt-3">Add product</h2>
+            <form action="/admin/add-products" method="post" enctype="multipart/form-data">
+
+                <label for="">Product Name</label>
+                <input type="text" name="name" class="form-control" required>
+
+                {{!-- <label for="">Catagory</label>
+                <input type="text" name="catagory" class="form-control"> --}}
+
+                
+
+                <label for="">Description</label>
+                <input type="text" name="description" class="form-control" required>
+
+                <label for="">Price</label>
+                <input type="number" name="price" class="form-control" required>
+
+                <label for="">Image</label>
+                <input type="file" name="Image" class="form-control" required><br>
+
+                <select class="form-select" name="category" aria-label="Default select example" id="select">
+                    <option selected>Select Category</option>
+                    {{#each catDetails}}
+
+                    <option value="{{this.category}}">{{this.category}}</option>
+                    {{/each}}
+                </select><br>
+
+
+                <button type="submit" class="btn btn-success mt-3">Submit</button>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>

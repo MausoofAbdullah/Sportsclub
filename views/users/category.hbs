@@ -1,0 +1,83 @@
+<section class="product spad">
+    <div class="container ">
+                    <div class="row">
+                        {{#each catProducts }}
+
+                        <div class="col-md-3 p-3">
+                            <div class="card mt-4" style="width: 300px; height:30rem">
+                                <a href="/single-product/{{this._id}}">
+                                    <img src="product-images/{{this._id}}.jpg" class="card-img-top" alt="..."
+                                        style="height: 250px;">
+
+                                </a>
+
+                                <div class="card-body">
+                                    <h5 class="card-title text-primary">{{this.name}}</h5>
+                                    <p class="card-text text-danger font-weight-normal">Rs.{{this.price}}</p>
+                                    <p class="card-text">{{this.description}}</p>
+
+                                    {{!-- <i class="fas fa-camera fa-9x"></i> --}}
+                                    <button onclick="addToWhishlist('{{this._id}}')"
+                                        class="bi-heart-fill btn btn-primary" style='font-size:12px'> Add to
+                                        Wishlist</button>
+                                    <button onclick="addToCart('{{this._id}}')" class=" bi-cart-fill btn btn-success"
+                                        style='font-size:12px'> Add to Cart</button>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        {{/each}}
+                    </div>
+                </div>
+</section> 
+<script>
+		function addToWhishlist(proId){
+			$.ajax({
+				url:'/add-to-whishlist/'+proId,
+				method:'get',
+				success:(response)=>{
+					if(response.status){
+						let count=$('#whish-count').html()
+						count=parseInt(count)+1
+						$('#whish-count').html(count)
+                          	Swal.fire(
+						'added to whishlist',
+						'',
+						'success'
+					)
+					}
+					//alert(response);
+					//Swal.fire(
+ // 'Added to Wishlist',
+ // 'You clicked the button!',
+  //'success'
+//)
+				}
+
+			})
+		}
+function addToCart(proId){
+    $.ajax({
+        url:'/add-to-cart/'+proId,
+        method:'get',
+        success:(response)=>{
+            if(response.status){
+            let count=$('#cart-count').html()
+            count=parseInt(count)+1
+            $("#cart-count").html(count)
+              	Swal.fire(
+						'added to cart',
+						'',
+						'success'
+					)
+            }
+            
+        }
+    })
+}
+
+		
+		
+	</script>

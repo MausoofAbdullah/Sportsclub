@@ -1,0 +1,33 @@
+ getAllProducts:()=>{
+        return new Promise(async(resolve,reject)=>{
+            try {
+                let notDeleted = await db.get().collection(collection.PRODUCT_COLLECTION).findOne({  deleted: false })
+                if(notDeleted){
+                    let products=await db.get().collection(collection.PRODUCT_COLLECTION).find().toArray()
+                resolve(products)
+                }else {
+                    resolve({ status: false })
+                }
+                
+            } catch (error) {
+                reject(error)
+            }
+      
+        })
+    },
+    // deleteProduct:(proId)=>{
+    //     return new Promise((resolve,reject)=>{
+    //         try {
+    //             db.get().collection(collection.PRODUCT_COLLECTION).updateOne({_id:objectId(proId)},{
+    //                 $set:{
+    //                     deleted:true
+    //                 }
+    //             }).then((response)=>{
+    //                 resolve(response)
+    //             })
+    //         } catch (error) {
+    //             reject(error)
+    //         }
+           
+    //     })
+    // },

@@ -1,0 +1,63 @@
+
+<html>
+     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+<section>
+    <div class="container">
+        <div class="">
+            {{!-- <a href="/" class="btn btn-success my-5">Add Users</a> --}}
+        </div>
+        <table class="table mt-5 display" id="usersTable">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">MobNumber</th>
+                     <th scope="col">Status</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each userdetails}}
+                <tr>
+                    <td>{{this.Name}} </td>
+                    <td>{{this.Email}} </td>
+                    <td>{{this.MobNumber}} </td>
+                    {{#if blocked}}
+                    <td>Inactive</td>
+                    {{else}}
+                    <td>Active</td>
+                    {{/if}}
+                    <td>
+                        {{#if blocked}}
+                       
+                        <a href="/admin/unblock-user/{{this._id}}" class="btn btn-primary">Unblock</a>
+                        {{else}}
+                        <a href="/admin/block-user/{{this._id}}" class="btn btn-danger"
+                            onclick="return confirm('Are you sure to block {{this.Name}}?')">block</a>
+                            {{/if}}
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</section>
+<script >
+    $(document).ready(function () {
+
+
+        $('#usersTable').wrap('<div id="hide" style="display:none"/>');
+
+        $('#hide').css('display', 'block');
+    });
+
+
+    var table = $('#usersTable').DataTable();
+    
+
+</script>
+</html>
+
+ 

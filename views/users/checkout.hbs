@@ -1,0 +1,532 @@
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__links">
+                    <a href="/"><i class="fa fa-home"></i> Home</a>
+                    <span class="text-danger">Checkout</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+
+<!-- Checkout Section Begin -->
+<section class="checkout spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h6 class="coupon__link"><span class="icon_tag_alt"></span> <input type="text" placeholder="Enter coupon code" id="coupon">
+            <button class="tp_btn" onclick="applyCoupon()">Apply Coupon</button> </h6>
+            </div>
+        </div>
+        {{!-- <div class="cupon_area">
+            <div class="check_title">
+                <h2>Have a coupon? </h2>
+            </div>
+            <input type="text" placeholder="Enter coupon code" id="coupon">
+            <button class="tp_btn" onclick="applyCoupo()">Apply Coupon</button>
+        </div> --}}
+        <form method="" id="checkout-form">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h5>Billing detail</h5>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="checkout__form__input">
+                                <p>First Name <span>*</span></p>
+                                <input type="text" name="name" value="{{selectAddress.Name}}" required/>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="checkout__form__input">
+                                <p>Email <span>*</span></p>
+                                <input type="text" name="Email" value="{{selectAddress.Email}}" required/>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="checkout__form__input">
+                                <p>Phone <span>*</span></p>
+                                <input type="text" name="phone" value="{{selectAddress.Mobile}}" required/>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="checkout__form__input">
+                                <p>Address<span>*</span></p>
+                                <input type="text" name="country" value="{{selectAddress.Address}}" required/>
+                            </div>
+                            <div class="checkout__form__input">
+                                <p>Town <span>*</span></p>
+                                <input type="text" placeholder="" name="address" value="{{selectAddress.Town}}" required/>
+                               
+                            </div>
+
+                            <div class="checkout__form__input">
+                                <p>District <span>*</span></p>
+                                <input type="text" name="country" value="{{selectAddress.District}}" required/>
+                            </div>
+                            <div class="checkout__form__input">
+                                <p>Postcode/Zip <span>*</span></p>
+                                <input type="text" name="postcode" value="{{selectAddress.Pincode}}"  required/>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="checkout__form__input">
+                               
+                                <input type="text" name="userId" id="userId" value="{{user._id}}" hidden>
+                                  <input type="text" name="discount" id="offer" value="0" hidden>
+                        <input type="text" name="grandTotal" id="finalprice" value="{{total}}" hidden>
+                            </div>
+                        </div>
+                        {{!-- <div class="col-lg-12">
+                            <div class="checkout__form__checkbox">
+                                <label for="acc">
+                                    Create an acount?
+                                    <input type="checkbox" id="acc">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <p>Create am acount by entering the information below. If you are a returing
+                                    customer login at the <br />top of the page</p>
+                            </div>
+                            <div class="checkout__form__input">
+                                <p>Account Password <span>*</span></p>
+                                <input type="text">
+                            </div>
+                            <div class="checkout__form__checkbox">
+                                <label for="note">
+                                    Note about your order, e.g, special noe for delivery
+                                    <input type="checkbox" id="note">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="checkout__form__input">
+                                <p>Oder notes <span>*</span></p>
+                                <input type="text" placeholder="Note about your order, e.g, special noe for delivery">
+                            </div>
+                        </div>
+                    </div> --}}
+
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="checkout__order">
+                    <h5>Your order</h5>
+                    <div class="checkout__order__product">
+                       
+                          
+                        <ul>
+                           {{!-- {{#each products}}
+                            <li>{{this.product.name}}<span>{{this.quantity}}x{{this.product.price}}</span></li>
+                            
+                            {{/each}} --}}
+                            <li><a href="#">Product <span>Total</span></a></li>
+                                {{#each products}}
+                                <li><a href="#">{{this.product.name}} <span class="middle">x {{this.quantity}}</span>
+                                        <span class="last">{{this.product.price}}</span></a></li>
+                                {{/each}}
+                        </ul>
+                    </div>
+                    <div class="checkout__order__total">
+                        <ul>
+                            <li>Subtotal <span id="subTotal">{{total}}</span></li> 
+                            <li><a href="#">Discount <span id="discount"></span></a></li>
+                            <li>Total <span id="grandTotal">{{total}}</span></li>
+                        </ul>
+                    </div>
+                    <div class="checkout__order__widget">
+                        {{!-- <label for="o-acc">
+                            Create an acount?
+                            <input type="checkbox" id="o-acc">
+                            <span class="checkmark"></span>
+                        </label>
+                        <p>Create am acount by entering the information below. If you are a returing customer
+                            login at the top of the page.</p> --}}
+
+
+
+                        {{!-- <div>
+                            <div class="radio mt-1" >
+                                <label for="COD">COD</label>
+                                <input type="radio" id="check-payment" name="paymentType" value="COD" >
+                            </div>
+                            <div class="radio">
+                                <label for="check-payment">PAYPAL</label>
+                                <input type="radio" id="check-payment" name="paymentType" value="ONLINE">
+                            </div>
+                           
+                        </div> --}}
+                                  <div class="payment_item">
+                                        <div class="radion_btn">
+                                            <input type="radio" id="f-option5" name="paymentType" value="COD">
+                                            <label for="f-option5">Cash on delivery</label>
+                                            <div class="check"></div>
+                                        </div>
+                                    </div>
+                                    <div class="payment_item ">
+                                        <div class="radion_btn">
+                                            <input type="radio" id="f-option6" name="paymentType" value="ONLINE">
+                                            <label for="f-option6">Razorpay </label>
+                                            <img src="img/product/card.jpg" alt="">
+                                            <div class="check"></div>
+                                        </div>
+                                    </div>
+                                        {{!-- <div class="radio">
+                                    <input  type="radio" name="payementType"
+                                        id="check-payment" value="COD">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        COD
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <input  type="radio" name="payementType"
+                                      id="check-payment" value="ONLINE">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Online
+                                    </label>
+                                </div> --}}
+
+                    </div>
+                    <button type="submit" class="site-btn">Place oder</button>
+                </div>
+            </div>
+            <div>
+
+            </div>
+        </form>
+    </div>
+</section>
+{{!-- <div class="row">
+            {{#each userDetails.Addresses}}
+            <div class="col-md-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.Name}}</h5>
+                        <p class="card-subtitle mb-2 text-muted">{{this.Phone}}</p>
+                        <p class="card-text">
+                            {{this.Building_Name}},{{this.Street_Name}}<br>{{this.City}},{{this.Pincode}}</p>
+                        <button onclick="showAddress('{{../userData._id}}','{{this._addId}}')"
+                            class="card-link btn btn-primary">Select</button>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div> --}}
+    <div class="accordion" id="accordionExample">
+                     {{#each userAddress}}
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Address:  {{inc @index}}
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+
+       
+        <p>Name:{{this.Name}}</p>
+         <p>Email:{{this.Email}}</p>
+          <p>Mobile:{{this.Mobile}}</p>
+         
+         <p>Address:{{this.Address}}</p>
+          <p>Town/City:{{this.Town}}</p>
+           <p>District:{{this.District}}</p>
+            <p>State:{{this.State}}</p>
+             <p>Pincode:{{this.Pincode}}</p>
+      </div>
+      <div>
+        <a href="/checkout?id={{this.id}}" class="btn btn-danger mt-0 ml-3">Select</a>
+        {{!-- <button type="submit" class="tp_btn ml-3">Select</button> --}}
+      </div>
+    </div>
+  </div>
+ {{/each}}
+  
+</div>
+
+
+<!-- Checkout Section End --> 
+
+<!-- Instagram Begin -->
+{{!-- <div class="instagram">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg" data-setbg="img/instagram/insta-1.jpg">
+                    <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg" data-setbg="img/instagram/insta-2.jpg">
+                    <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg" data-setbg="img/instagram/insta-3.jpg">
+                    <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg" data-setbg="img/instagram/insta-4.jpg">
+                    <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg" data-setbg="img/instagram/insta-5.jpg">
+                    <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg" data-setbg="img/instagram/insta-6.jpg">
+                    <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Instagram End -->
+
+<!-- Footer Section Begin -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-7">
+                <div class="footer__about">
+                    <div class="footer__logo">
+                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        cilisis.</p>
+                    <div class="footer__payment">
+                        <a href="#"><img src="img/payment/payment-1.png" alt=""></a>
+                        <a href="#"><img src="img/payment/payment-2.png" alt=""></a>
+                        <a href="#"><img src="img/payment/payment-3.png" alt=""></a>
+                        <a href="#"><img src="img/payment/payment-4.png" alt=""></a>
+                        <a href="#"><img src="img/payment/payment-5.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-5">
+                <div class="footer__widget">
+                    <h6>Quick links</h6>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blogs</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4">
+                <div class="footer__widget">
+                    <h6>Account</h6>
+                    <ul>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Orders Tracking</a></li>
+                        <li><a href="#">Checkout</a></li>
+                        <li><a href="#">Wishlist</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-8 col-sm-8">
+                <div class="footer__newslatter">
+                    <h6>NEWSLETTER</h6>
+                    <form action="#">
+                        <input type="text" placeholder="Email">
+                        <button type="submit" class="site-btn">Subscribe</button>
+                    </form>
+                    <div class="footer__social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                <div class="footer__copyright__text">
+                    <p>Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template
+                        is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                            target="_blank">Colorlib</a>
+                    </p>
+                </div>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
+
+<!-- Search Begin -->
+<div class="search-model">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch">+</div>
+        <form class="search-model-form">
+            <input type="text" id="search-input" placeholder="Search here.....">
+        </form>
+    </div>
+</div> --}}
+<!-- Search End -
+
+!--================Checkout Area =================-->
+
+<script>
+function showAddress(userId, addId) {
+        $.ajax({
+            url: '/get-edit-address',
+            data: {
+                userId: userId,
+                addressId: addId
+            },
+            method: 'post',
+            success: (response) => {
+                console.log(response)
+                if (response) {
+                    document.getElementById('AddrName').value = response.Addresses.Name;
+                    document.getElementById('AddrPhone').value = response.Addresses.Phone;
+                    document.getElementById('AddrBuidlingName').value = response.Addresses.Building_Name;
+                    document.getElementById('AddrStreetName').value = response.Addresses.Street_Name;
+                    document.getElementById('AddrCity').value = response.Addresses.City;
+                    document.getElementById('AddrDistrict').value = response.Addresses.District;
+                    document.getElementById('AddrState').value = response.Addresses.State;
+                    document.getElementById('AddrPincode').value = response.Addresses.Pincode;
+                } else {
+                    alert("No response")
+                }
+            }
+        })
+    }
+
+    $("#checkout-form").submit((e) => {
+        e.preventDefault()
+        $.ajax({
+            url: '/checkout',
+            method: 'post',
+            data: $('#checkout-form').serialize(),
+            success: (response) => {
+                alert(response)
+                if (response.codSuccess) {
+                    location.href = '/order-success'
+                } else {
+                    razorpayPayment(response)
+                }
+            }
+        })
+    })
+    function razorpayPayment(order) {
+        var options = {
+            "key": "rzp_test_yJVEhlIuWwafTK", // Enter the Key ID generated from the Dashboard
+            "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "currency": "INR",
+            "name": "Mausoof",
+            "description": "Test Transaction",
+            "image": "https://example.com/your_logo",
+            "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "handler": function (response) {
+
+                verifyPayment(response, order)
+            },
+            "prefill": {
+                "name": "Gaurav Kumar",
+                "email": "gaurav.kumar@example.com",
+                "contact": "9999999999"
+            },
+            "notes": {
+                "address": "Razorpay Corporate Office"
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    }
+    function verifyPayment(payment, order) {
+        $.ajax({
+            url: '/verify-payment',
+            data: {
+                payment,
+                order
+            },
+            method: 'post',
+            success: (response) => {
+                if (response.status) {
+                    console.log("fgra")
+                      	Swal.fire(
+						'payment successful',
+						'',
+						'success'
+					)
+                    location.href = '/order-success'
+                } else {
+                    alert("payment failed")
+                }
+            }
+        })
+    }
+
+    function applyCoupon() {
+        var userId = document.getElementById('userId').value
+        console.log(userId)
+        var coupon = document.getElementById('coupon').value
+        var subTotal = document.getElementById('subTotal').innerHTML
+        $.ajax({
+            url: '/apply-coupon',
+            data: {
+                couponName: coupon,
+                userId: userId
+            },
+            method: 'post',
+            success: (response) => {
+                if (response.expired) {
+                    alert("Sorry coupon have expired")
+                } else if (response.notAvailable) {
+                    alert("Invalid coupon")
+                } else if (response.used) {
+                    alert("Coupon already used")
+                } else {
+                    var discount = response.Value
+                    var grandTotal = subTotal - discount
+                    document.getElementById('discount').innerHTML = discount
+                    document.getElementById('grandTotal').innerHTML = grandTotal
+                    document.getElementById('offer').value = discount
+                    document.getElementById('finalprice').value = grandTotal
+                   
+                }
+            }
+        })
+    }
+</script>

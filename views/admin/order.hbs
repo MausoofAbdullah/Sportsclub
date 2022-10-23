@@ -1,0 +1,55 @@
+<section>
+    <div class="container mb-4 ">
+        <div class=" container row mb-2 ">
+        <table class="table mt-5 table-bordered">
+            <thead>
+                <tr>
+                     <th scope="col">OrderID</th>
+                    {{!-- <th scope="col">ProID</th> --}}
+                     <th scope="col">Date</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                     <th scope="col">Payment</th>
+                    <th scope="col">Status</th>
+                     <th scope="col">Option</th>
+                      
+
+                   
+                </tr>
+            </thead>
+            {{#each order}}
+            <tbody>
+               
+                <tr>
+                  <td>{{this._id}}</td>
+                  {{!-- <td>{{this.products.item}}</td> --}}
+                   <td>{{this.date}}</td>
+                    <td>{{deliveryDetails.phone}}</td>
+                    <td>{{deliveryDetails.address}}</td>
+                     <td>{{this.paymentType}}</td>
+                      <td>{{this.status}}</td>
+                      <td>
+                        <a class="btn btn-link" href="/admin/view-orderproduct/{{this._id}}">View</a>
+                      </td>
+                </tr>
+                
+            </tbody>
+            {{/each}}
+        </table>
+    </div>
+    </div>
+
+</section>
+<script>
+    $(document).ready(function () {
+
+
+        $('#orderTable').wrap('<div id="hide" style="display:none"/>');
+
+        $('#hide').css('display', 'block');
+    });
+
+
+    var table = $('#orderTable').DataTable();
+</script>
+
