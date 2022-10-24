@@ -12,12 +12,14 @@
         <div class="offcanvas__close">+</div>
         <ul class="offcanvas__widget">
             <li><span class="icon_search search-switch"></span></li>
-            <li><a href="/user/cart"><span class="icon_heart_alt"></span>
-                <div class="tip">2</div>
+             {{# if user}}
+            <li><a href="/whishlist"><span class="icon_heart_alt"></span>
+                <div class="tip" id="whish-count">{{whishCount}}</div>
             </a></li>
-            <li><a href="#"><span class="icon_bag_alt"></span>
-                <div class="tip">2</div>
+            <li><a href="/cart"><span class="icon_bag_alt"></span>
+                <div class="tip" id="cart-count">{{cartCount}}</div>
             </a></li>
+            {{/if}}
         </ul>
         <div class="offcanvas__logo">
             <a href="/"><img src="/user/Images/logo.png" alt=""></a>

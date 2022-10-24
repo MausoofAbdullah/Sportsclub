@@ -710,12 +710,23 @@ let user=req.session.user
     try {
       let products = await userHelpers.getOrderProduct(req.params.id);
     let orders = await userHelpers.getUserOrders(req.session.user._id);
+    let cartCount=null
+    let whishCount=null
+    
+    if (req.session.user) {
+      cartCount = await userHelpers.getCartCount(req.session.user._id);
+      whishCount = await userHelpers.getWhishCount(req.session.user._id);
+    }
     value = await userHelpers.value(req.params.id);
     res.render("users/view-order-products", {
       user: req.session.user,
       products,
       orders,
       value,
+      users: true,
+      layout: "user-layout",  
+      whishCount,
+      cartCount
     });
     } catch (error) {
       next(error);
