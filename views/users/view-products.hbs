@@ -1,5 +1,7 @@
+
  {{#each banners}}
-<section class="banner set-bg mb-1"  data-setbg="product-images/{{this._id}}.jpg" style="width: 1400px  ">
+
+<section class="container-fluid banner set-bg mb-1"  data-setbg="product-images/{{this._id}}.jpg" style="width: 1400px  ">
     <div class="container">
         <div class="row">
             <div class="col-xl-7 col-lg-8 m-auto">
@@ -33,6 +35,7 @@
     </div>
     {{/each}}
 </section>
+</div>
 
  <!-- Categories Section Begin -->
    
@@ -46,7 +49,7 @@
 
                         <div class="col-md-3 p-3 mt-0">
                             
-                            <div class="card mt-0" style="width: 300px; height:30rem">
+                            <div class="card mt-0" style="width: 17rem; height:25rem">
                                 <a href="/single-product/{{this._id}}">
                                     <img src="product-images/{{this._id}}.jpg" class="card-img-top" alt="..."
                                         style="height: 250px;">
@@ -54,9 +57,9 @@
                                 </a>
 
                                 <div class="card-body">
-                                    <h5 class="card-title text-primary">{{this.name}}</h5>
-                                    <p class="card-text text-danger font-weight-normal">Rs.{{this.price}}</p>
-                                    <p class="card-text">{{this.description}}</p>
+                                    <h5 class="card-title text-primary mb-2">{{this.name}}</h5>
+                                    <p class="card-text text-danger font-weight-normal mb-1">Rs.{{this.price}}</p>
+                                    <p class="card-text mb-1">{{this.description}}</p>
 
                                     {{!-- <i class="fas fa-camera fa-9x"></i> --}}
                                     <button onclick="addToWhishlist('{{this._id}}')"
