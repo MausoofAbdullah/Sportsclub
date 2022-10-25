@@ -8,7 +8,7 @@ module.exports.connect = function (done) {
     const url=process.env.DATABASE  
    
     const dbname = 'SportsClub'
-    process.env.DATABASE 
+   
 
     mongoClient.connect(url, (err, data) => {
         if (err) return done(err)
