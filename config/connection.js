@@ -6,8 +6,7 @@ const state = {
 
 module.exports.connect = function (done) {
     const url = 'mongodb+srv://MausoofAbdullah2:9686327955@cluster0.79bwqcz.mongodb.net/?retryWrites=true&w=majority' 
-   
-    const dbname = 'SportsClub'
+   const dbname = 'SportsClub'
    
 
     mongoClient.connect(url, (err, data) => {
