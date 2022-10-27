@@ -199,7 +199,7 @@
 
 
 
-</html> --}}
+</html> 
 
 <script>
 		function addToWhishlist(proId){
@@ -212,12 +212,8 @@
 						let count=$('#whish-count').html()
 						count=parseInt(count)+1
 						$('#whish-count').html(count)
-                       location.reload()
-                           //     	Swal.fire(
-						//'Item added to Whishlist!',
-						//'',
-						//'success'
-				//	)
+                        location.reload()
+                        
 					}else{
                         location.href="/login"
                     }
@@ -225,33 +221,32 @@
 					alert(response);
 					Swal.fire(
   'Added to Wishlist',
-  'You clicked the button!',
+ 'You clicked the button!',
   'success'
 )
 				}
 
 			})
 		}
-function addToCart(proId) {
-    Swal.fire({
-        // position: 'top-end',
-        icon: 'success',
-        title: 'Added to Cart',
-        showConfirmButton: false,
-        timer: 1500
-      })
+function addToCart(proId){
     $.ajax({
-        url: '/add-to-cart/' + proId,
-        method: 'get',
-        success: (response) => {
-            if (response.status) {
-                let count = $('#cart-count').html()
-                count = parseInt(count) + 1
-                
-                $("#cart-count").html(count)
-                  location.reload()
-
+        url:'/add-to-cart/'+proId,
+        method:'get',
+        success:(response)=>{
+            if(response.status){
+            let count=$('#cart-count').html()
+            count=parseInt(count)+1
+            $("#cart-count").html(count)
+            	 location.reload()
+            	Swal.fire(
+						'Item added to Cart!',
+						'',
+						'success'
+					)
+            }else{
+                location.href="/login"
             }
+            
         }
     })
 }
