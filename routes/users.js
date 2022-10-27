@@ -579,6 +579,9 @@ let user=req.session.user
     }
    
   });
+
+ 
+  
   router.get("/checkout", verifyLogin, async (req, res, next) => {
     try {
       let total = await userHelpers.getTotalAmount(req.session.user._id);

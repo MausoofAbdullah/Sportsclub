@@ -144,7 +144,7 @@
             <div class="col-lg-4 col-md-6 col-sm-7">
                 <div class="footer__about">
                     <div class="footer__logo">
-                        <a href="./index.html"><img src="/adminf/images/sportslogo.jpg"  style="width:100px; height: 50px;" alt=""></a>
+                        <a href="home"><img src="/adminf/images/sportslogo.jpg"  style="width:100px; height: 50px;" alt=""></a>
                     </div>
                     <p>Exclusive collections of sports Items.</p>
                     <div class="footer__payment">
@@ -208,41 +208,50 @@
 				method:'get',
 				success:(response)=>{
 					if(response.status){
+                    
 						let count=$('#whish-count').html()
 						count=parseInt(count)+1
 						$('#whish-count').html(count)
-                        	Swal.fire(
-						'Item added to Whishlist!',
-						'',
-						'success'
-					)
-					}
-					//alert(response);
-					//Swal.fire(
- // 'Added to Wishlist',
- // 'You clicked the button!',
-  //'success'
-//)
+                       location.reload()
+                           //     	Swal.fire(
+						//'Item added to Whishlist!',
+						//'',
+						//'success'
+				//	)
+					}else{
+                        location.href="/login"
+                    }
+                       
+					alert(response);
+					Swal.fire(
+  'Added to Wishlist',
+  'You clicked the button!',
+  'success'
+)
 				}
 
 			})
 		}
-function addToCart(proId){
+function addToCart(proId) {
+    Swal.fire({
+        // position: 'top-end',
+        icon: 'success',
+        title: 'Added to Cart',
+        showConfirmButton: false,
+        timer: 1500
+      })
     $.ajax({
-        url:'/add-to-cart/'+proId,
-        method:'get',
-        success:(response)=>{
-            if(response.status){
-            let count=$('#cart-count').html()
-            count=parseInt(count)+1
-            $("#cart-count").html(count)
-            	Swal.fire(
-						'Item added to Cart!',
-						'',
-						'success'
-					)
+        url: '/add-to-cart/' + proId,
+        method: 'get',
+        success: (response) => {
+            if (response.status) {
+                let count = $('#cart-count').html()
+                count = parseInt(count) + 1
+                
+                $("#cart-count").html(count)
+                  location.reload()
+
             }
-            
         }
     })
 }
