@@ -1,4 +1,4 @@
-
+<div class="container-fluid">
  {{#each banners}}
 
 <section class="container-fluid banner set-bg mb-1"  data-setbg="product-images/{{this._id}}.jpg" style="width: 1400px  ">
@@ -213,43 +213,23 @@
 						count=parseInt(count)+1
 						$('#whish-count').html(count)
                         location.reload()
+                        				Swal.fire(
+  'Added to Wishlist',
+ 'You clicked the button!',
+  'success'
+)
                         
 					}else{
                         location.href="/login"
                     }
                        
-					alert(response);
-					Swal.fire(
-  'Added to Wishlist',
- 'You clicked the button!',
-  'success'
-)
+				
+	
 				}
 
 			})
 		}
-function addToCart(proId){
-    $.ajax({
-        url:'/add-to-cart/'+proId,
-        method:'get',
-        success:(response)=>{
-            if(response.status){
-            let count=$('#cart-count').html()
-            count=parseInt(count)+1
-            $("#cart-count").html(count)
-            	 location.reload()
-            	Swal.fire(
-						'Item added to Cart!',
-						'',
-						'success'
-					)
-            }else{
-                location.href="/login"
-            }
-            
-        }
-    })
-}
+
 
 		
 		

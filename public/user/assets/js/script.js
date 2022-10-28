@@ -100,3 +100,26 @@
 //     })
 // }
 
+function addToCart(proId){
+    $.ajax({
+        url:'/add-to-cart/'+proId,
+        method:'get',
+        success:(response)=>{
+            if(response.status){
+            let count=$('#cart-count').html()
+            count=parseInt(count)+1
+           document.getElementById('cart-count').innerHTML=count
+//$("#cart-count").html(count)
+            location.reload()
+            	Swal.fire(
+						'Item added to Cart!',
+						'',
+						'success'
+					)
+            }else{
+                location.href="/login"
+            }
+            
+        }
+    })
+}
