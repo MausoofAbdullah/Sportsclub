@@ -90,7 +90,7 @@ module.exports = {
                     resolve({ status: false })
                 }
             } catch (error) {
-                
+                reject(error)
             }
           
         })
@@ -101,7 +101,7 @@ module.exports = {
                 let userdetails = await db.get().collection(collection.USER_COLLECTION).find().toArray()
                 resolve(userdetails)
             } catch (error) {
-                
+                reject(error)
             }
            
         })
@@ -114,7 +114,7 @@ module.exports = {
                     resolve(response)
                 })
             } catch (error) {
-                
+                reject(error)
             }
            
         })
