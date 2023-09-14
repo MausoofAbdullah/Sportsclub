@@ -1,10 +1,10 @@
 
 // require('dotenv').config();
-const accountID=process.env.ACCOUNTID
-const authToken=process.env.AUTHTOKEN
-const serviceID=process.env.SERVICEID
+// const accountID=process.env.ACCOUNTID
+// const authToken=process.env.AUTHTOKEN
+// const serviceID=process.env.SERVICEID
 
-const client=require('twilio')(accountID, authToken, serviceID)
+// const client=require('twilio')(accountID, authToken, serviceID)
 
 
 module.exports={
