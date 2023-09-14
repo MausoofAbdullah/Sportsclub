@@ -21,6 +21,7 @@ module.exports = {
         return new Promise(async(resolve,reject)=>{
             try {
                 let products=await db.get().collection(collection.PRODUCT_COLLECTION).find({deleted:false}).toArray()
+                console.log(products,"anyy")
                 resolve(products)
             } catch (error) {
                 reject(error)

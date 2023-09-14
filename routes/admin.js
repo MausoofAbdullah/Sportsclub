@@ -16,7 +16,7 @@ try {
   if(req.session.adminloggedIn){
     res.redirect('/admin/index') 
   }else{
-   
+   console.log("something")
     res.render('admin/admin-login',{});
   }
 

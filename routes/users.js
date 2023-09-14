@@ -42,11 +42,13 @@ router.get("/", async function (req, res, next) {
   }
   adminHelpers.getAllBanner().then((banners) => {
   productHelper.getAllProducts().then(async (products) => {
+    console.log("Podd",products)
     let category = req.query.category;
     let showCategory = await productHelper.showCategory();
     let catProducts = await productHelper.categoryProducts(category);
 
     console.log(cartCount);
+    console.log("view products")
     res.render("users/view-products", {
       user,
       products,
