@@ -1,0 +1,142 @@
+
+<body>
+    <!-- Left Panel -->
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="/admin/index"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
+                    </li>
+                    <li class="menu-title"></li><!-- /.menu-title -->
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Products</a>
+                        <ul class="sub-menu children dropdown-menu">                           
+                            
+
+                            <li><i class="fa fa-id-card-o"></i><a href="/admin/view-products">View Products</a></li>
+                      <li><i class="fa fa-id-card-o"></i><a href="/admin/add-products">Add Products</a></li>
+                         
+                        </ul>
+                    </li>
+                  <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Categories</a>
+                        <ul class="sub-menu children dropdown-menu">                           
+                            <li><i class="fa fa-id-card-o"></i><a href="/admin/add-categories">Add Categories</a></li>
+                            <li><i class="fa fa-id-card-o"></i><a href="/admin/view-categories">view Categories</a></li>
+                            {{!-- <li><i class="fa fa-id-card-o"></i><a href="/admin/add-categories">Add Categories</a></li>
+                      <li><i class="fa fa-id-card-o"></i><a href="/admin/view-categories">View Categories</a></li> --}}
+                         
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Users</a>
+                        <ul class="sub-menu children dropdown-menu">                           
+                            
+
+                            <li><i class="fa fa-id-card-o"></i><a href="/admin/manage-users">Manage users</a></li>
+                     
+                         
+                        </ul>
+                    </li>
+
+                     <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Products</a>
+                        <ul class="sub-menu children dropdown-menu">                           
+                            
+
+                            <li><i class="fa fa-id-card-o"></i><a href="/admin/view-products">View Products</a></li>
+                      <li><i class="fa fa-id-card-o"></i><a href="/admin/add-products">Add Products</a></li>
+                         
+                        </ul>
+                    </li>
+                     <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Banners</a>
+                        <ul class="sub-menu children dropdown-menu">                           
+                            
+
+                            <li><i class="fa fa-id-card-o"></i><a href="/admin/view-banner">View Banners</a></li>
+                      <li><i class="fa fa-id-card-o"></i><a href="/admin/add-banner">Add Banners</a></li>
+                         
+                        </ul>
+                    </li>
+
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Coupons</a>
+                        <ul class="sub-menu children dropdown-menu">                           
+                            
+
+                            <li><i class="fa fa-id-card-o"></i><a href="/admin/coupon">Manage coupons</a></li>
+             
+                         
+                        </ul>
+                    </li>
+                        <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Orders</a>
+                        <ul class="sub-menu children dropdown-menu">                           
+                            
+
+                            <li><i class="fa fa-id-card-o"></i><a href="/admin/order">View Orders</a></li>
+                     
+                         
+                        </ul>
+                    </li>
+
+                    
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside>
+    <!-- /#left-panel -->
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+        <!-- Header-->
+        <header id="header" class="header">
+            <div class="top-left">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="./"><img src="/adminf/images/sportslogo.jpg" style="width:100px; height: 40px;" alt="Logo"></a>
+                    <a class="navbar-brand hidden" href="./"><img src="/adminf/images/logo2.png" alt="Logo"></a>
+                    <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
+                </div>
+            </div>
+            <div class="top-right">
+                <div class="header-menu">
+                    <div class="header-left">
+                        <button class="search-trigger"><i class="fa fa-search"></i></button>
+                        <div class="form-inline">
+                            <form class="search-form">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                                <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                            </form>
+                        </div>
+
+                        
+
+                        
+                    </div>
+
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="/adminf/images/admin.jpg" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+                            {{!-- <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+
+                            <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
+
+                            <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a> --}}
+
+                            {{!-- <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a> --}}
+                            {{#if admin}}
+                       <a class="dropdown-item" href="/admin/admin-logout">Log Out</a>
+                        {{else}}
+                       <a class="dropdown-item" href="/admin/admin-login">Log In</a>
+                      
+                        {{/if}}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+        <!-- /#header -->

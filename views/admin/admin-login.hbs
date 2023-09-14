@@ -1,0 +1,41 @@
+
+<section class="vh-100 pt-5">
+  <div class="container py-5 h-100 bg-info">
+    
+    <div class="row d-flex align-items-center justify-content-center h-100 pt-5">
+
+      <div class="col-md-4 ml-auto mr-auto mt-5 offset-xl-1">
+        <form action="/admin/admin-login" method="post">
+          <h3>Sports Club</h3>
+          <h4 class="text-secondary pt-2">Admin Login</h4>
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+             <label class="form-label" for="form1Example13">Email address</label>
+            <input type="email" id="form1Example13" name="Email" class="form-control form-control-lg" required />
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form1Example23">Password</label>
+            <input type="password" id="form1Example23" name="Password" class="form-control form-control-lg" required />
+          </div>
+
+          <div class="d-flex justify-content-around align-items-center mb-4">
+          </div>
+
+          {{#if adminLoggErr}}
+          <p class="text-danger">Invalid email or password</p>
+          {{/if}}
+
+
+
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Log in</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+  

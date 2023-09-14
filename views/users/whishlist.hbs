@@ -1,0 +1,154 @@
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__links">
+                    <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                    <span>Whishlist</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+
+<!-- Shop Cart Section Begin -->
+<section class="shop-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shop__cart__table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Add to cart</th>
+                                
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each products}}
+                            <tr>
+
+                                <td class="cart__product__item">
+                                    <img style="width:70px; height:70px" src="product-images/{{this.products._id}}.jpg"
+                                        alt="">
+                                    <div class="cart__product__item__title">
+                                        <h6>{{this.products.name}}</h6>
+
+
+                                        <div class="rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        {{!-- {{/each}} --}}
+                                    </div>
+                                </td>
+                                <td class="cart__price">{{this.products.price}}</td>
+                               <td> <button onclick="addToCart('{{products._id}}')" class="btn btn-primary">Add toCart</button></td>
+                               
+                                {{!-- <td class="cart__quantity">
+                                    <div class="pro-qty">
+                                        <input type="text" value="{{this.quantity}}">
+                                    </div>
+                                </td> --}}
+                                {{!-- <td>
+                                    <p>{{user._id}}</p><button class="cart-item-count mr-3"
+                                        onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">-</button>
+                                    <span id="{{this.product._id}}">{{this.quantity}}</span>
+                                    <button class="cart-item-count ml-3"
+                                        onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">+</button>
+                                </td> --}}
+                                {{!-- <td class="cart__total">$ 300.0</td> --}}
+                                <td class="cart__close"><span class="icon_close" onclick="removeProduct('{{this._id}}','{{this.products._id}}')" ></span></td>
+                            </tr>
+                            {{/each}}
+                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="cart__btn">
+                    <a href="/shop">Continue Shopping</a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="cart__btn update__btn">
+                   
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {{!-- <div class="col-lg-6">
+                <div class="discount__content">
+                    <h6>Discount codes</h6>
+                    <form action="#">
+                        <input type="text" placeholder="Enter your coupon code">
+                        <button type="submit" class="site-btn">Apply</button>
+                    </form>
+                </div>
+            </div> --}}
+            <div class="col-lg-4 offset-lg-2">
+                <div class="cart__total__procced">
+                    {{!-- <h6>Cart total</h6> --}}
+                  
+                    <a href="/cart" class="primary-btn">Proceed to cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Shop Cart Section End -->
+<script>
+function addToCart(proId){
+    $.ajax({
+        url:'/add-to-cart/'+proId,
+        method:'get',
+        success:(response)=>{
+            if(response.status){
+            let count=$('#cart-count').html()
+            count=parseInt(count)+1
+            $("#cart-count").html(count)
+              	Swal.fire(
+						'added to cart',
+						'',
+						'success'
+					)
+            }
+            
+        }
+    })
+}
+    
+</script>
+<script>
+    function removeProduct(cartId, proId) {
+        console.log(cartId, proId)
+        $.ajax({
+            url: '/delete-wishproduct/' + cartId + '/' + proId,
+            method: 'get',
+            success: (response) => {
+                if (response.removeProduct) {
+                    
+                    location.reload()
+                    $("#whish-count").load(location.href + "#whish-count");
+                      	Swal.fire(
+						'product removed',
+						'',
+						'success'
+					)
+                }
+            }
+        })
+    }
+</script>

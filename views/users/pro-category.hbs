@@ -1,0 +1,250 @@
+   
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+   <section><div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-1 mb-0">
+            <h4 class="gallery-title mb-4">SHOP BY CATEGORIES</h4>
+        </div>
+        
+            
+        
+
+        <div align="center" class="mb-1" >
+            
+			
+            <button class="btn btn-default filter-button mb-0" data-filter="all" ><a href="/shop">All</a></button>
+            
+            
+			
+			{{#each showCategory}}
+            <button class="btn btn-default filter-button mb-0" data-filter="hdpe"><a href="/shop?category={{this.category}}">{{this.category}}</a></button>
+			 {{/each}}
+           
+        </div>
+        
+        <section class="product spad pb-1">
+            {{#if catProducts}}
+    <div class="container ">
+                    <div class="row mb-1">
+                        {{#each catProducts }}
+
+                        <div class="col-md-3 p-3 mb-1">
+                            <div class="card mt-0" style="width: 250px; height:450px">
+                                <a href="/single-product/{{this._id}}">
+                                    <img src="product-images/{{this._id}}.jpg" class="card-img-top" alt="..."
+                                        style="height: 250px;">
+
+                                </a>
+
+                                <div class="card-body">
+                                    <h5 class="card-title text-primary">{{this.name}}</h5>
+                                    <p class="card-text text-danger font-weight-normal">Rs.{{this.price}}</p>
+                                    <p class="card-text">{{this.description}}</p>
+
+                                    {{!-- <i class="fas fa-camera fa-9x"></i> --}}
+                                    <button onclick="addToWhishlist('{{this._id}}')"
+                                        class="bi-heart-fill btn btn-primary" style='font-size:12px'> Add to
+                                        Wishlist</button>
+                                    <button onclick="addToCart('{{this._id}}')" class=" bi-cart-fill btn btn-success"
+                                        style='font-size:12px'> Add to Cart</button>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        {{/each}}
+                    </div>
+                </div>
+                {{else}}
+                <h2 class="text-primary pl-5 mt-0">All Products</h2>
+<hr class="mt-0">
+
+                <div class="container ">
+                    <div class="row">
+                        {{#each products }}
+
+                        <div class="col-md-3 p-3">
+                            <div class="card mt-4" style="width: 250px; height:450px">
+                                <a href="/single-product/{{this._id}}">
+                                    <img src="product-images/{{this._id}}.jpg" class="card-img-top" alt="..."
+                                        style="height: 250px;">
+
+                                </a>
+
+                                <div class="card-body">
+                                    <h5 class="card-title text-primary">{{this.name}}</h5>
+                                    <p class="card-text text-danger font-weight-normal">Rs.{{this.price}}</p>
+                                    <p class="card-text">{{this.description}}</p>
+
+                                    {{!-- <i class="fas fa-camera fa-9x"></i> --}}
+                                    <button onclick="addToWhishlist('{{this._id}}')"
+                                        class="bi-heart-fill btn btn-primary" style='font-size:12px'> Add to
+                                        Wishlist</button>
+                                    <button onclick="addToCart('{{this._id}}')" class=" bi-cart-fill btn btn-success"
+                                        style='font-size:12px'> Add to Cart</button>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        {{/each}}
+                    </div>
+                </div>
+                {{/if}}
+</section> 
+		
+                            
+                           
+		
+	<script>
+		$(document).ready(function(){
+
+    $(".filter-button").click(function(){
+        var value = $(this).attr('data-filter');
+        
+        if(value == "all")
+        {
+            
+            $('.filter').show('1000');
+        }
+        else
+        {
+          
+            $(".filter").not('.'+value).hide('3000');
+            $('.filter').filter('.'+value).show('3000');
+            
+        }
+    });
+    
+    if ($(".filter-button").removeClass("active")) {
+$(this).removeClass("active");
+}
+$(this).addClass("active");
+
+});
+	</script>
+    <script>$(document).ready(function () {
+  $('#dtBasicExample').DataTable();
+  $('.dataTables_length').addClass('bs-select');
+});</script>
+
+<style>table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+  bottom: .5em;
+}</style>
+
+	<style>
+		
+.gallery-title
+{
+    font-size: 36px;
+    color: #FFA500;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 70px;
+}
+.gallery-title:after {
+    content: "";
+    position: absolute;
+    width: 22.5%;
+    left: 38.5%;
+    height: 45px;
+    border-bottom: 1px solid #5e5e5e;
+}
+.filter-button
+{
+    font-size: 18px;
+    border: 1px solid #FFA500;
+    border-radius: 5px;
+    text-align: center;
+    color: #FFA500;
+    margin-bottom: 30px;
+
+}
+.filter-button:hover
+{
+    font-size: 18px;
+    border: 1px solid #FFA500;
+    border-radius: 5px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #FFA500;
+
+}
+.btn-default:active .filter-button:active
+{
+    background-color: #FFA500;
+    color: white;
+}
+ 
+.port-image
+{
+    width: 100%;
+}
+
+.gallery_product
+{
+    margin-bottom: 30px;
+}
+
+img{
+        box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+	</style>
+	</section>
+    <script>
+		function addToWhishlist(proId){
+			$.ajax({
+				url:'/add-to-whishlist/'+proId,
+				method:'get',
+				success:(response)=>{
+					if(response.status){
+						let count=$('#whish-count').html()
+						count=parseInt(count)+1
+						$('#whish-count').html(count)
+					}
+					//alert(response);
+					//Swal.fire(
+ // 'Added to Wishlist',
+ // 'You clicked the button!',
+  //'success'
+//)
+				}
+
+			})
+		}
+function addToCart(proId){
+    $.ajax({
+        url:'/add-to-cart/'+proId,
+        method:'get',
+        success:(response)=>{
+            if(response.status){
+            let count=$('#cart-count').html()
+            count=parseInt(count)+1
+            $("#cart-count").html(count)
+              	Swal.fire(
+						'added to cart',
+						'',
+						'success'
+					)
+            }
+            
+        }
+    })
+}
+
+		
+		
+	</script>
